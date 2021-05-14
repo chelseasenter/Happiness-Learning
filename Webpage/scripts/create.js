@@ -1,4 +1,5 @@
 var points = 40;
+var xarray = ['economy_gdp_per_capita', 'health_life_expectancy', 'freedom', 'trust_government_corruption', 'generosity'];
 
 function init() {
     var url = "http://127.0.0.1:5000/";
@@ -8,32 +9,8 @@ function init() {
     // Establishing allowance as a variable that can be changed //
     // var allowance = d3.select("#allowance").attr("value");
     var allowtext = d3.select("#allowance").attr("text");
-    var xarray = ['economy_gdp_per_capita', 'health_life_expectancy', 'freedom', 'trust_government_corruption', 'generosity'];
-    var yarray = [0, 0, 0, 0, 0]
-
-
-    var data = [
-        {
-            x: xarray,
-            y: yarray,
-            type: 'bar'
-        }
-    ];
-
-    Plotly.newPlot('myBar', data, { responsive: true });
-
-    var tablecat = d3.select(".scorebuttons");
-
-    xarray.forEach(element =>
-        tablecat.append("trow")
-            .append("td").text(`${element}`)
-            // .append("td").append("button").attr("class", "plussign").text("+")
-            .append("input").attr("class", "catscore").attr("type", "number").attr("min", "0").attr("max", "40")
-        // .append("td").append("button").attr("class", "minussign").text("-")
-    );
-
-    tablecat.append("button").attr("id", "submit").text("Submit");
-
+    
+    //A function to change the format of the categories names
     function FormatCats(name) {
         const base = name.split("_");
         x_category = base.map((word) => {
@@ -47,9 +24,8 @@ function init() {
         }).join(" ")
         return x_category;
     }
-    console.log(xarray);
 
-
+    //Constructs an object for each of the categories, setting their scores to 0
     class CategoryLevel {
         constructor(category) {
             this.category = category;
@@ -68,19 +44,71 @@ function init() {
             allowance += allowance
         }
     };
-    
+
+    //Empty arrays to push the object data to in order to plotly
     newx = [];
-    xarray.map(cats => new CategoryLevel(cats));
+    namearray = [];
+    pointsarray = [];
     xarray.forEach(cats => new CategoryLevel(cats));
     for (let i= 0; i < xarray.length; i++) {
-        newx.push(new CategoryLevel(xarray[i]))
+        
+        newx.push(new CategoryLevel(xarray[i]));
+        namearray.push(new CategoryLevel(xarray[i]).name);
+        pointsarray.push(new CategoryLevel(xarray[i]).score);
     };
 
-console.log(newx);
+    var data = [
+        {
+            x: namearray,
+            y: pointsarray,
+            type: 'bar'
+        }
+    ];
+
+    Plotly.newPlot('myBar', data, { responsive: true });
+
+    var tablecat = d3.select(".scorebuttons");
+
+    newx.forEach(element =>
+        tablecat.append("trow")
+            .append("td").text(`${element.name}`)
+            // .append("td").append("button").attr("class", "plussign").text("+")
+            .append("input").attr("class", `${ element.category }`).attr("type", "number").attr("min", "0").attr("max", "40")
+        // .append("td").append("button").attr("class", "minussign").text("-")
+    );
+
+    tablecat.append("button").attr("id", "submit").text("Submit");
+
 
 };
 
-// d3.selectAll("catscore")
+allscore = d3.selectAll("input")
+console.log(allscore)
+function updateScore() {
+    
+    //sum all of the scores and make sure it is not over 40
+    //might should be a function outside of Updatescore
+    var sumpoints = 0
+    sumpoints += points
+    for (let i = 0; i < allscore.length; i++) {
+        sumpoints += allscore[i].value
+    };
+    console.log(sumpoints);
+    //if over
+    //if under
+    //determine which element was changed
+};
+
+allscore.on("change", updateScore)
+
+function outputScore(){
+    //function to pull the values from each object and create a json query to pull them from flask route
+    //return the value into d3 select happscore and update
+    // return the country that also has the closest attributes to the user's country
+};
+
+d3.select("#submit").on("click", outputScore);
+d3.selectAll("catscore");
 // Creating an even on the click of the plus or minus sign //
 // d3.selectAll(".catscore").on("change", CategoryLevel.addition);
 
