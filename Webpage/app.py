@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request, jsonify
 from joblib import dump, load
 from pickle import dump as dump_p, load as load_p
 from flask_cors import CORS, cross_origin
+import json
 
 app = Flask(__name__)
 CORS(app, resources={
@@ -54,7 +55,21 @@ app.route('/imaginary_country/<econ_gdp>/<life_exp>/<freedom>/<govt_trust>/<gene
          hap_level = "Unhappy"
 
 
-      response ={"prediction": prediction, "level": hap_level}
+      # determine nearest country by happiness score
+      with open('Webpage\data\country_happiness_score.json') as f:
+         data = json.load(f)
+
+      start = 10
+      for key, value in data:
+         delta = prediction - value
+
+         if delta < start:
+            start = delta
+            nearest = key
+      
+
+
+      response ={"prediction": prediction, "level": hap_level, "nearest": nearest}
 
       
       
