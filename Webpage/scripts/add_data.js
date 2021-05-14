@@ -22,3 +22,13 @@ function Tags() {
     };
 };
 Tags();
+
+function ImportData() {
+    var govt = d3.select("#govt").node().value;
+    var free = d3.select("#free").node().value;
+    var howhapp = d3.select("#howhapp").node().value;
+    var gen = d3.select("#gen").node().value;
+    // function to push to flask
+}
+
+d3.select("#newentry").on("click", ImportData)
