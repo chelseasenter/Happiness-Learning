@@ -71,6 +71,5 @@ app.route('/imaginary_country/<econ_gdp>/<life_exp>/<freedom>/<govt_trust>/<gene
 
       response ={"prediction": prediction, "level": hap_level, "nearest": nearest}
 
-      
-      
+
       return jsonify(response)
