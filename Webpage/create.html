@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 </head>
 
@@ -14,7 +15,6 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class='fas fa-bars'></i></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
@@ -25,14 +25,51 @@
               <a class="dropdown-item text-primary" href="viz.html">Visualizations</a>
               <a class="dropdown-item text-primary" href="about.html">About Us</a>
             </div>
-        </li>
-      </ul>
+           </li>
+        </ul>
     </div>
-</nav>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <h2>Create your own country here and we'll tell you how happy you'll be!</h2>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-3 col-xl-3">
+                <p>You've been given an allowance to distribute to each category. When you have used your whole allowance,
+                    please press submit and we will return the happiness score for your country. We will also show you the 
+                    closest country to yours and how you compare! Please use the reset button if you want to try again"
+                </p>
+            <!-- </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2"></div> -->
+                <h3>Allowance</h3>
+                <hr>
+                <h2 id="allowance">40</h2>
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl-6">
+                <div id="myBar"></div>
+                <table>
+                    <tbody class="scorebuttons"></tbody>
+                </table>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <h3>Your Country Happiness Score:</h3>
+                <hr>
+                <h2 id="happscore">?</h2>
+            <!-- </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2"> -->
+                <h3>Closest Country</h3>
+                <hr>
+                <h2 id="country">?</h2>
+            </div>
+        </div>
+    
+    </div>
+   
 
-    <h2>Create your own country here and we'll tell you how happy you'll be!</h2>
-
+    <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="scripts/create.js"></script>
 </body>
