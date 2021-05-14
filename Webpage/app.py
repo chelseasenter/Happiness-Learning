@@ -1,11 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 from joblib import dump, load
 from pickle import dump as dump_p, load as load_p
-import backend
 from flask_cors import CORS, cross_origin
-
-# load the pipeline object
-pipeline = load("text_classification.joblib")
 
 app = Flask(__name__)
 CORS(app, resources={
@@ -18,64 +14,48 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['CORS_ORIGINS'] = '*'
 app.config['DEBUG'] = True
 
-worldMap = backend.WorldMap()
+app.route('/imaginary_country/<econ_gdp>/<life_exp>/<freedom>/<govt_trust>/<generosity>')
+   def get_pred_happiness(econ_gdp, life_exp, freedom, govt_trust, generosity):
+       
+      
+      # inverse scale happiness score with happiness scaler, store in variable
+      # check if happiness is unhappy, happy, etc
+      # return unscaled happiness score and qualitative result
 
-@app.route('/')
-def home():
-    return render_template('index.html')
 
-@app.route('/', methods=['GET', 'POST'])
-# No action needed here. Just display index.
-def index():
-    map_data = worldMap.mapJson()
-    return jsonify(map_data)
+      # Setting happiness levels
+      unhappy = 2.523 #"Unhappy"
+      low_happy = 3.85275 #"Low Happiness"
+      mod_happy = 5.182499999999999 #"Moderately Happy"
+      happy = 6.51225 #"Happy"
+      ext_happy = 7.842 #"Extremely Happy"
 
-@app.route("/year_list")
-def year_list():
-    # getting data
-    data = range(2015, 2022)
-    data = list(data)
-    response = {"years": data}
-    return jsonify(response)
+      # LinRegress coeffs determined from Jupyter notebook
+      coef_gdp = 1.211244050635855 
+      coef_life = 1.707979044319649 
+      coef_freedom = 1.9806188129473845 
+      coef_corrupt = 1.9806188129473845 
+      coef_generosity = 0.6536659939512272 
+      intercept = 2.33466608
 
-@app.route("/country_list")
-def country_list():
-    # getting data
-    data = worldMap.get_countries()
-    response = {"country": data}
-    return jsonify(response)
+      # determine predicted happiness
+      prediction = econ_gdp*coef_gdp + life_exp*coef_life + freedom*coef_freedom + govt_trust*coef_corrupt + generosity*coef_generosity + intercept
+      
+      # Detemine happiness level
+      if prediction > happy:
+         hap_level = "Extremely Happy"
+      elif prediction > mod_happy:
+         hap_level = "Happy"
+      elif prediction > low_happy:
+         hap_level = "Moderately Happy"
+      elif prediction > unhappy:
+         hap_level = "Low Happiness"
+      else:
+         hap_level = "Unhappy"
 
-@app.route("/x_category")
-def x_category():
-    # getting data
-    data = worldMap.get_x_categories()
-    data = list(data)
-    response = {"x_categories": data}
-    return jsonify(response)
 
-@app.route("/scatter_plot/<x_category>/<int:year>")
-def Pull_plot(x_category, year):
-    pull_data = worldMap.scatter_plot(x_category, year)  
-    response = {
-            "year": pull_data['year'],
-            "x_category": pull_data['x_category'],
-            "x_data": list(pull_data['x_data']),
-            "y_category": pull_data['y_category'],
-            "y_data": list(pull_data['y_data']),
-            "line_eq": pull_data['line_eq'],
-            "reg_values": list(pull_data['reg_values']),
-            "countries": list(pull_data['countries']),
-            "r_value": pull_data['r_value'],
-            "p_value": pull_data['p_value']
-            }
-    return jsonify(response)
+      response ={"prediction": prediction, "level": hap_level}
 
-@app.route("/line_plot/<country>")
-def Line_plot(country):
-    data = worldMap.time_plot(country)
-    response ={
-        "country": country,
-        "x_data": list(data["x_data"]),
-        "y_data": list(data["y_data"])
-    }
-    return jsonify(response)
+      
+      
+      return jsonify(response)
