@@ -17,3 +17,7 @@
 .card {
     background-color:#002b36;
 }
+
+.bg-dark-alt {
+    background-color: #002b36 !important;
+}
