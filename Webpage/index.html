@@ -5,28 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css">
+    <link rel="stylesheet" href="styling/style.css">
 
-    <style>
-      .cardholder {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 75%;
-        margin: 0 auto;
-      }
-    </style>
 </head>
 
 <body>
 
-    <main role="main" class="justify-content-center">
-      <section class="jumbotron justify-content-center covered" id="mainPageSection">
+
+      <!-- <section class="jumbotron justify-content-center id="mainPageSection">
           <div class="justify-content-center covered-img"></div>
           <h1 class="text-primary" style="text-align:center;"> Welcome to the Happiness Project Site!</h1>
           <p style="text-align:center;">Are you happy in the country you currently live in? Tell our machine learning algorithm about your story! </p>
           <p style="text-align:center;">Do you think you can create a country with a HAPPIER score?</p>
-          <p style="text-align:center;">Want to know more about our project? All these questions can be answered here! </p> 
+          <p style="text-align:center;">Want to know more about our project? All these questions can be answered here! </p>  -->
 
+          <nav class="navbar navbar-dark bg-dark">
+            <h1 class="text-primary" style="text-align:center; width:100%;"> Welcome to the Happiness Project Site!</h1>
+        </nav>
+
+        <main role="main" class="justify-content-center">
+          <section class="jumbotron justify-content-center covered-img" id="mainPageSection">
+          <div class="justify-content-center"></div>
           <div class="cardholder">
                   <div class="card border-primary md-3" style="max-width: 20rem;">
                     <div class="card-body">
@@ -53,8 +52,9 @@
                   </div>
 
             </div>
-        </section>
-                  
+          </div>
+          </section>
+        </main>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

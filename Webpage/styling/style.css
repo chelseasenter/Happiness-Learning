@@ -1,0 +1,19 @@
+.covered-img {
+    background-image:url('../images/sunflower-field.jpg');
+    background-size:cover; 
+    background-position:center;
+    height:100vh;
+}
+
+.cardholder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 75%;
+    margin: 0 auto;
+    opacity: 1;
+  }
+
+.card {
+    background-color:#002b36;
+}
