@@ -83,6 +83,7 @@ function init() {
 };
 
 allscore = d3.selectAll("input")
+console.log(allscore)
 function updateScore() {
     
     //sum all of the scores and make sure it is not over 40
@@ -92,13 +93,13 @@ function updateScore() {
     for (let i = 0; i < allscore.length; i++) {
         sumpoints += allscore[i].value
     };
+    console.log(sumpoints);
     //if over
     //if under
     //determine which element was changed
 };
 
 allscore.on("change", updateScore)
-console.log(allscore)
 
 function outputScore(){
     //function to pull the values from each object and create a json query to pull them from flask route
