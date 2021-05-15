@@ -1,3 +1,4 @@
+from typing import Counter
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 from joblib import dump, load
 from pickle import dump as dump_p, load as load_p
@@ -112,9 +113,22 @@ def store_FTM(cntry,econ_gdp, life_exp, frdm, govt_trust, gnrsty):
       message = result
    except:
       message = 'An error occured'
-      
-   return message
+   
 
+   # store countries only for dropdown
+   with open('Webpage\data\country_happiness_score.json') as f:
+      data = json.load(f)
+
+   countries = []
+   for key in data:
+
+      if key not in countries:
+         countries.append(key)
+
+
+   response = {"message": message, "countries": countries}
+
+   return jsonify(response)
 
 
 if __name__ == "__main__":
