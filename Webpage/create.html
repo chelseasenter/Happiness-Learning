@@ -10,23 +10,25 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md">
-    <a class="navbar-brand text-primary" href="index.html">The Happiness Project</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><i class='fas fa-bars'></i></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-primary" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
-            <div class="dropdown-menu text-primary" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item text-primary" href="create.html">Create Your Own Country</a>
-              <a class="dropdown-item text-primary" href="add_data.html">Contribute To Our Dataset</a>
-              <a class="dropdown-item text-primary" href="about.html">About Us</a>
-            </div>
-           </li>
-        </ul>
-    </div>
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand text-primary" href="index.html">The Happiness Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class='fas fa-bars'></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-primary" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <div class="dropdown-menu text-primary" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-primary" href="create.html">Create Your Own Country</a>
+                        <a class="dropdown-item text-primary" href="add_data.html">Contribute To Our Dataset</a>
+                        <a class="dropdown-item text-primary" href="about.html">About Us</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </nav>
     <div class="container">
         <div class="row">
@@ -35,21 +37,22 @@
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-3 col-xl-3">
-                <p>You've been given an allowance to distribute to each category. When you have used your whole allowance,
-                    please press submit and we will return the happiness score for your country. We will also show you the 
+                <p>You've been given an allowance to distribute to each category. When you have used your whole
+                    allowance,
+                    please press submit and we will return the happiness score for your country. We will also show you
+                    the
                     closest country to yours and how you compare! Please use the reset button if you want to try again"
                 </p>
-            <!-- </div>
+                <!-- </div>
             <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2"></div> -->
                 <h3>Allowance</h3>
                 <hr>
-                <h2 id="allowance">40</h2>
+                <h2 id="allowance" value="40" min="0" max="40">40</h2>
             </div>
             <div class="col-md-12 col-lg-9 col-xl-9">
                 <div id="myBar"></div>
                 <table>
-                    <tbody class="scorebuttons">
-                        <!-- <trow>
+                    <!-- <trow>
                             <td>Economy GDP per Capita <input id="economy_gdp_per_capita" type="number" value=0 min=0 max=40></td>
                         </trow>
                         <trow>
@@ -67,26 +70,30 @@
                         <trow>
                             <td><button id="submit">Submit</button></td>
                         </trow> -->
-                        <tbody class="scorebuttons">
-                            <trow>
-                                <td>Economy GDP per Capita</td><td> <input id="economy_gdp_per_capita" type="number" value=0 min=0 max=40></td>
-                            </trow>
-                            <trow>
-                                <td>Health Life Expectancy</td><td><input id="health_life_expectancy" type="number" value=0 min=0 max=40></td>
-                            </trow>
-                            <trow>
-                                <td>Freedom </td><td><input id="freedom" type="number" value=0 min=0 max=40></td>
-                            </trow>
-                            <trow>
-                                <td>Trust Government Corruption </td><td><input id="trust_government_corruption" type="number" value=0 min=0 max=40></td>
-                            </trow>
-                            <trow>
-                                <td>Genrosity </td><td><input id="generosity" type="number" value=0 min=0 max=40></td>
-                            </trow>
-                            <trow>
-                                <td><button id="submit">Submit</button></td>
-                            </trow>
-                        </tbody>
+                    <tbody class="scorebuttons">
+                        <trow>
+                            <td>Economy GDP per Capita</td>
+                            <td> <input id="economy_gdp_per_capita" type="number" value=0 min=0 max=40></td>
+                        </trow>
+                        <trow>
+                            <td>Health Life Expectancy</td>
+                            <td><input id="health_life_expectancy" type="number" value=0 min=0 max=40></td>
+                        </trow>
+                        <trow>
+                            <td>Freedom </td>
+                            <td><input id="freedom" type="number" value=0 min=0 max=40></td>
+                        </trow>
+                        <trow>
+                            <td>Trust Government Corruption </td>
+                            <td><input id="trust_government_corruption" type="number" value=0 min=0 max=40></td>
+                        </trow>
+                        <trow>
+                            <td>Genrosity </td>
+                            <td><input id="generosity" type="number" value=0 min=0 max=40></td>
+                        </trow>
+                        <trow>
+                            <td><button id="submit">Submit</button></td>
+                        </trow>
                     </tbody>
                 </table>
             </div>
@@ -103,13 +110,19 @@
                 </div>
             </div>
         </div>
-    
+
     </div>
-   
+
 
     <script src="https://d3js.org/d3.v6.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script src="scripts/create.js"></script>
 </body>
