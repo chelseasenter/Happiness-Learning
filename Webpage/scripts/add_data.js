@@ -1,14 +1,17 @@
 // var url = "http://127.0.0.1:5000/";
 
+
+
 path = "data/country_happiness_score.json"
+var countries = []
 d3.json(path).then(function (data) {
-    var dropdown = d3.select("selcont");
     console.log(data);
-    country_list = []
     data.map(function(data) {
-    var countries = data.country
+    countries.push(data.country)
     })
 });
+
+console.log(countries)
     //function for getting unique values in array
 
 
@@ -16,14 +19,17 @@ d3.json(path).then(function (data) {
 //     dropdown.append("option").attr("value", country[i]).text(country[i]);
 // };
 
-function AppendCont() {
+function AppendCont(data) {
     var dropdown = d3.select("#selcont");
-    for (let i = 0; i < countries.length; i++) {
-        dropdown.append("option").attr("value", countries[i]).text(countries[i]);
+    for (let i = 0; i < data.length; i++) {
+        console.log(data[i])
+        dropdown.append("option").attr("value", data[i]).text(data[i]);
+        
     }
+    console.log(data)
 };
 
-AppendCont();
+AppendCont(countries);
 
 var scale = [0, 1, 2, 3, 4, 5]
 var tags = ["govt", "free", "howhapp", "gen"]
@@ -41,6 +47,7 @@ function Tags() {
     };
 };
 Tags();
+
 
 function ImportData() {
     var govt = d3.select("#govt").node().value;
