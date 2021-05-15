@@ -6,9 +6,10 @@ path = "data/country_happiness_score.json"
 var countries = []
 d3.json(path).then(function (data) {
     console.log(data);
-    data.map(function(data) {
-    countries.push(data.country)
+    data.forEach(function(countrydata) {
+    countries.push(countrydata.country)
     })
+    AppendCont(countries);
 });
 
 console.log(countries)
@@ -29,7 +30,6 @@ function AppendCont(data) {
     console.log(data)
 };
 
-AppendCont(countries);
 
 var scale = [0, 1, 2, 3, 4, 5]
 var tags = ["govt", "free", "howhapp", "gen"]
