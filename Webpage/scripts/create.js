@@ -7,6 +7,13 @@ var allowtext = d3.select("#allowance").attr("text");
 console.log(allowtext)
 var allowvalue = d3.select("#allowance").attr("value")
 console.log(allowvalue)
+
+var econ = d3.select("#economy_gdp_per_capita")
+var health = d3.select("#health_life_expectancy")
+var free = d3.select("#freedom")
+var trust = d3.select("#trust_government_corruption")
+var gener = d3.select("#generosity")
+console.log(econ)
 //A function to change the format of the categories names
 
 function FormatCats(name) {
@@ -74,8 +81,7 @@ function init() {
 
     // Establishing allowance as a variable that can be changed //
     // var allowance = d3.select("#allowance").attr("value");
-
-
+    // var economy = econ.value()
 
     //Constructs an object for each of the categories, setting their scores to 0
 
@@ -108,7 +114,7 @@ function updateScore(catchanged, num) {
     // if (d3.select(`#${catchanged}`) > newx.score)
     //sum all of the scores and make sure it is not over 40
     //might should be a function outside of Updatescore
-    console.log(newx[num].score)
+    console.log("updateScore is running")
     var catoldscore = newx[num].score;
     var catnewscore = Number(d3.select(`#${xarray[num]}`).node().value);
     var scorechange = catoldscore - catnewscore;
@@ -129,12 +135,20 @@ function updateScore(catchanged, num) {
     //if under
     //determine which element was changed
 };
+function NewUpdateScore() {
+    var whatchange = d3.select(this);
+    // console.log(whatchange)
+    console.log(whatchange.node().value);
+    var num = whatchange.node().value;
+    var changeid = whatchange.attr("id")
+}
+econ.on("change", NewUpdateScore);
 
-d3.select("#economy_gdp_per_capita").on("change", updateScore("economy_gdp_per_capita", 0));
-d3.select("#health_life_expectancy").on("change", updateScore("health_life_expectancy", 1));
-d3.select("#freedom").on("change", updateScore("freedom", 2));
-d3.select("#trust_government_corruption").on("change", updateScore("trust_government_corruption", 3));
-d3.select("#generosity").on("change", updateScore("generosity", 4));
+// econ.on("change", updateScore("economy_gdp_per_capita", 0));
+health.on("change", updateScore("health_life_expectancy", 1));
+free.on("change", updateScore("freedom", 2));
+trust.on("change", updateScore("trust_government_corruption", 3));
+gener.on("change", updateScore("generosity", 4));
 
 function outputScore() {
     //function to pull the values from each object and create a json query to pull them from flask route
