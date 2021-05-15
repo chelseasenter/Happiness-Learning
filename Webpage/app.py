@@ -7,9 +7,16 @@ import json
 # For SQL Connect
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, insert
 
+# From Heroku credentials
+username = "wnpdgutwqozkwm" 
+password = '490a8dd6d0a3f6a6c381300a185b23a3c3329d3bacc1d3717a5bf68e7351cd90'
+Base = automap_base()
 
+engine = create_engine(f'postgres://{username}:{password}@ec2-3-211-37-117.compute-1.amazonaws.com:5432/d4rg5ld0gedobs')
+
+Base.prepare(engine, reflect=True)
 
 
 app = Flask(__name__)
@@ -88,17 +95,25 @@ def get_pred_happiness(econ_gdp, life_exp, freedom, govt_trust, generosity):
    return jsonify(response)
 
 
-@app.route('/FTM/<econ_gdp>/<life_exp>/<freedom>/<govt_trust>/<generosity>')
-def store_FTM(econ_gdp, life_exp, freedom, govt_trust, generosity):
+@app.route('/FTM/<cntry>/<econ_gdp>/<life_exp>/<frdm>/<govt_trust>/<generosity>')
+def store_FTM(cntry,econ_gdp, life_exp, frdm, govt_trust, gnrsty):
+
+   try:
+   
+      conn = engine.connect()
       
-   # INSERT INTO Database_Name.Table_Name (Column1_Name, Column2_Name,...)
+      stmt = (
+         insert('feed_the_machine'). #table name
+         values(country = cntry, econ_gdp_per_capita = econ_gdp, health_life_expectancy = life_exp, freedom = frdm, trust_government_corruption = govt_trust, generosity = gnrsty)
+      )
 
-   # VALUES
+      result = conn.execute(stmt)
 
-   # ('Column1_Value1', 'Column2_Value2',...),
-
-
-   # return jsonify(response)
+      message = result
+   except:
+      message = 'An error occured'
+      
+   return message
 
 
 
