@@ -4,7 +4,9 @@ var newx = [];
 var namearray = [];
 var pointsarray = [];
 var allowtext = d3.select("#allowance").attr("text");
-
+console.log(allowtext)
+var allowvalue = d3.select("#allowance").attr("value")
+console.log(allowvalue)
 //A function to change the format of the categories names
 
 function FormatCats(name) {
@@ -44,14 +46,14 @@ class CategoryLevel {
 
 //A function to create the objects in variables (same as the newxarray)
 
-function CreateObjects() {
-    var economy_gdp_per_capita = new CategoryLevel('economy_gdp_per_capita');
-    var health_life_expectancy = new CategoryLevel('health_life_expectancy');
-    var freedom = new CategoryLevel('freedom');
-    var trust_government_corruption = new CategoryLevel('trust_government_corruption');
-    var generosity = new CategoryLevel('generosity');
-};
-CreateObjects();
+// function CreateObjects() {
+//     var economy_gdp_per_capita = new CategoryLevel('economy_gdp_per_capita');
+//     var health_life_expectancy = new CategoryLevel('health_life_expectancy');
+//     var freedom = new CategoryLevel('freedom');
+//     var trust_government_corruption = new CategoryLevel('trust_government_corruption');
+//     var generosity = new CategoryLevel('generosity');
+// };
+// CreateObjects();
 
 //A funciton to update the arrays with the new values
 
@@ -111,6 +113,7 @@ function updateScore(catchanged, num) {
     var catnewscore = Number(d3.select(`#${xarray[num]}`).node().value);
     var scorechange = catoldscore - catnewscore;
     newx[num].change(scorechange)
+    console.log(catchanged);
 
     var sumpoints = 0;
     var xscore = 0;
@@ -127,15 +130,15 @@ function updateScore(catchanged, num) {
     //determine which element was changed
 };
 
-d3.select("#economy_gdp_per_capita").on("change", updateScore(economy_gdp_per_capita, 0));
-d3.select("#health_life_expectancy").on("change", updateScore(health_life_expectancy, 1));
-d3.select("#freedom").on("change", updateScore(freedom, 2));
-d3.select("#trust_government_corruption").on("change", updateScore(trust_government_corruption, 3));
-d3.select("#generosity").on("change", updateScore(generosity, 4));
+d3.select("#economy_gdp_per_capita").on("change", updateScore("economy_gdp_per_capita", 0));
+d3.select("#health_life_expectancy").on("change", updateScore("health_life_expectancy", 1));
+d3.select("#freedom").on("change", updateScore("freedom", 2));
+d3.select("#trust_government_corruption").on("change", updateScore("trust_government_corruption", 3));
+d3.select("#generosity").on("change", updateScore("generosity", 4));
 
 function outputScore() {
     //function to pull the values from each object and create a json query to pull them from flask route
-    
+    console.log(allowtext)
     //return the value into d3 select happscore and update
     // return the country that also has the closest attributes to the user's country
 };
@@ -144,7 +147,7 @@ d3.select("#submit").on("click", outputScore);
 
 init(
 );
-CreateObjects();
+// CreateObjects();
 
 
 
