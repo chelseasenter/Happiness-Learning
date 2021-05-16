@@ -1,19 +1,20 @@
-// var url = "http://127.0.0.1:5000/";
+var url = "http://127.0.0.1:5000/";
 
 
 
 path = "data/country_happiness_score.json"
 var countries = []
 d3.json(path).then(function (data) {
-    console.log(data);
-    data.forEach(function(countrydata) {
-    countries.push(countrydata.country)
-    })
+    data.forEach(function (countrydata) {
+        if ($.inArray(countrydata.country, countries) === -1) {
+            countries.push(countrydata.country)
+        };
+    });
+    countries.sort()
     AppendCont(countries);
 });
 
-console.log(countries)
-    //function for getting unique values in array
+//function for getting unique values in array
 
 
 // for (let i = 0; i < country.length; i++) {
@@ -23,15 +24,12 @@ console.log(countries)
 function AppendCont(data) {
     var dropdown = d3.select("#selcont");
     for (let i = 0; i < data.length; i++) {
-        console.log(data[i])
         dropdown.append("option").attr("value", data[i]).text(data[i]);
-        
     }
-    console.log(data)
 };
 
 
-var scale = [0, 1, 2, 3, 4, 5]
+var scale = [1, 2, 3, 4, 5]
 var tags = ["govt", "free", "howhapp", "gen"]
 
 function AppendSel(tag) {
@@ -48,13 +46,40 @@ function Tags() {
 };
 Tags();
 
+function PushData(govt, free, howhapp, gen) {
+    var inputdict = {
+        government: govt,
+        freedom: free,
+        happiness: howhapp,
+        generosity: gen
+    };
+    $.post("/postmethod", {
+        javascript_data: inputdict
+    });
+
+};
+
+//Nathan's way//
+// function PushData(govt, free, howhapp, gen) {
+//     console.log("PushData is happening")
+//     d3.json(url + "/getmethod/<jsdata>",function(error, data) {})
+//    .node().header("Content-Type","application/json")
+//    .send("POST", JSON.stringify({
+//         government: govt, 
+//         freedom: free,
+//         happiness: howhapp,
+//         generosity: gen
+//     }));
+// }
 
 function ImportData() {
+    console.log("ImportData is happening")
     var govt = d3.select("#govt").node().value;
     var free = d3.select("#free").node().value;
     var howhapp = d3.select("#howhapp").node().value;
     var gen = d3.select("#gen").node().value;
     // function to push to flask
+    PushData(govt, free, howhapp, gen);
     console.log(free)
 }
 

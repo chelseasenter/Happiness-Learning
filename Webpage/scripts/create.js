@@ -1,3 +1,4 @@
+var url = "http://127.0.0.1:5000/";
 var points = 40;
 var xarray = ['economy_gdp_per_capita', 'health_life_expectancy', 'freedom', 'trust_government_corruption', 'generosity'];
 var newx = [];
@@ -13,7 +14,6 @@ var health = d3.select("#health_life_expectancy")
 var free = d3.select("#freedom")
 var trust = d3.select("#trust_government_corruption")
 var gener = d3.select("#generosity")
-console.log(econ)
 //A function to change the format of the categories names
 
 function FormatCats(name) {
@@ -100,7 +100,18 @@ function init() {
         }
     ];
 
-    Plotly.newPlot('myBar', data, { responsive: true });
+    var layout = {
+        yaxis: {
+            range: [0, 40],
+            title: {
+                text: "Your Score",
+                standoff: 20
+            }
+        }
+    };
+
+
+    Plotly.newPlot('myBar', data, layout, { responsive: true });
 
 
 
@@ -115,6 +126,7 @@ function updateScore(catchanged, num) {
     //sum all of the scores and make sure it is not over 40
     //might should be a function outside of Updatescore
     console.log("updateScore is running")
+    console.log(CategoryLevel(catchanged.score))
     var catoldscore = newx[num].score;
     var catnewscore = Number(d3.select(`#${xarray[num]}`).node().value);
     var scorechange = catoldscore - catnewscore;
@@ -135,24 +147,91 @@ function updateScore(catchanged, num) {
     //if under
     //determine which element was changed
 };
+
+
+var econ = d3.select("#economy_gdp_per_capita")
+var health = d3.select("#health_life_expectancy")
+var free = d3.select("#freedom")
+var trust = d3.select("#trust_government_corruption")
+var gener = d3.select("#generosity")
+
+function UpdateMax() {
+    for (let i = 0; i < xarray.length; i++) {
+        console.log(Number(econ.node().value));
+        var max = 40 - Number(econ.node().value) - Number(health.node().value) - Number(free.node().value) - Number(trust.node().value) - Number(gener.node().value) + Number(d3.select(`#${xarray[i]}`).node().value);
+        console.log(max);
+        d3.select(`#${xarray[i]}`).attr({ "max": `${Number(max)}` });
+    }
+};
+
+function ReactPlot() {
+    pointsarray = []
+    for (let i = 0; i < xarray.length; i++) {
+        pointsarray.push(d3.select(`#${xarray[i]}`).node().value);
+    };
+    console.log(pointsarray);
+    var data = [
+        {
+            x: namearray,
+            y: pointsarray,
+            type: 'bar'
+        }
+    ];
+
+    var layout = {
+        yaxis: {
+            range: [0, 40],
+            title: {
+                text: "Your Score",
+                standoff: 20
+            }
+        }
+    };
+    Plotly.react('myBar', data, layout);
+    
+};
+
+function SetAllowance() {
+    var allowval = 40 - Number(econ.node().value) - Number(health.node().value) - Number(free.node().value) - Number(trust.node().value) - Number(gener.node().value);
+    console.log(allowval);
+}
+
+
 function NewUpdateScore() {
     var whatchange = d3.select(this);
     // console.log(whatchange)
     console.log(whatchange.node().value);
     var num = whatchange.node().value;
-    var changeid = whatchange.attr("id")
+    var changeid = whatchange.attr("id");
+    ReactPlot();
+    SetAllowance();
+    UpdateMax(changeid, num);
+    // updateScore(changeid, num)
 }
-econ.on("change", NewUpdateScore);
 
-// econ.on("change", updateScore("economy_gdp_per_capita", 0));
-health.on("change", updateScore("health_life_expectancy", 1));
-free.on("change", updateScore("freedom", 2));
-trust.on("change", updateScore("trust_government_corruption", 3));
-gener.on("change", updateScore("generosity", 4));
+// On the change of a value UpdateScore
+econ.on("change", NewUpdateScore);
+health.on("change", NewUpdateScore);
+free.on("change", NewUpdateScore);
+trust.on("change", NewUpdateScore);
+gener.on("change", NewUpdateScore);
 
 function outputScore() {
     //function to pull the values from each object and create a json query to pull them from flask route
-    console.log(allowtext)
+    var econval = Number(econ.node().value)
+    var healthval = Number(health.node().value)
+    var freeval = Number(free.node().value)
+    var trustval = Number(trust.node().value)
+    var generval = Number(gener.node().value)
+    var sum = econval + healthval + freeval + trustval + generval;
+    if (sum === 40) {
+        var queryurl = url + `/imaginary_country/${econval}/${healthval}/${freeval}/${trustval}/${generval}`
+        d3.json(queryurl).then(function (response) {
+            console.log(response);
+        })
+    } else {
+        d3.select("#message").node().style.visibility = "visible";
+    }
     //return the value into d3 select happscore and update
     // return the country that also has the closest attributes to the user's country
 };
