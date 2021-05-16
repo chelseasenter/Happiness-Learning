@@ -130,6 +130,11 @@ def store_FTM(cntry,econ_gdp, life_exp, frdm, govt_trust, gnrsty):
 
    return jsonify(response)
 
+@app.route('/postmethod', methods = ['POST'])
+def get_post_javascript_data():
+    jsdata = request.form['javascript_data']
+    return jsdata
+
 
 if __name__ == "__main__":
     app.run(debug=True)
