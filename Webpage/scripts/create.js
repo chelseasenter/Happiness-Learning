@@ -1,3 +1,4 @@
+var url = "http://127.0.0.1:5000/";
 var points = 40;
 var xarray = ['economy_gdp_per_capita', 'health_life_expectancy', 'freedom', 'trust_government_corruption', 'generosity'];
 var newx = [];
@@ -217,9 +218,17 @@ gener.on("change", NewUpdateScore);
 
 function outputScore() {
     //function to pull the values from each object and create a json query to pull them from flask route
-    var sum = Number(econ.node().value) + Number(health.node().value) + Number(free.node().value) + Number(trust.node().value) + Number(gener.node().value);
+    var econval = Number(econ.node().value)
+    var healthval = Number(health.node().value)
+    var freeval = Number(free.node().value)
+    var trustval = Number(trust.node().value)
+    var generval = Number(gener.node().value)
+    var sum = econval + healthval + freeval + trustval + generval;
     if (sum === 40) {
-
+        var queryurl = url + `/imaginary_country/${econval}/${healthval}/${freeval}/${trustval}/${generval}`
+        d3.json(queryurl).then(function (response) {
+            console.log(response);
+        })
     } else {
         d3.select("#message").node().style.visibility = "visible";
     }
