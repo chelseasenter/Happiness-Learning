@@ -1,3 +1,13 @@
+body {
+    background-color: #002b36!important;
+}
+h1 {
+    color: #fff;
+}
+section.jumbotron {
+    background-color: #00000000;
+}
+
 .covered-img {
     background-image:url('../images/sunflower-field.jpg');
     background-size:cover; 
@@ -12,12 +22,60 @@
     max-width: 75%;
     margin: 0 auto;
     opacity: 1;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
 .card {
     background-color:#002b36;
+    margin: 1em;
 }
 
 .bg-dark-alt {
     background-color: #002b36 !important;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav-interior, main {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.nav-interior {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-collapse {
+    max-width: fit-content;
+}
+
+main {
+    padding: 1em 0;
+}
+
+body.about .main-plus-sidebar {
+    max-width: 1100px;
+    margin: 0 auto;    
+}
+body.about main {
+    max-width: 100%;
+    margin: 0;
+}
+@media only screen and (min-width: 740px) {
+    body.about .main-plus-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 3rem;
+    }
+    body.about .sidebar {
+        position: fixed;
+        margin-top: 1.5rem;
+    }
 }

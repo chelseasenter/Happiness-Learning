@@ -5,32 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css">
-
+    <link rel="stylesheet" href="styling/style.css">
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-md">
-    <a class="navbar-brand text-primary" href="index.html">The Happiness Project</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><i class='fas fa-bars'></i></span>
-    </button>
+<body class="about">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="nav-interior">
+      <a class="navbar-brand" href="index.html">The Happiness Project</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class='fas fa-bars'></i></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-primary" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
-            <div class="dropdown-menu text-primary" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item text-primary" href="create.html">Create Your Own Country</a>
-              <a class="dropdown-item text-primary" href="add_data.html">Contribute To Our Dataset</a>
-              <a class="dropdown-item text-primary" href="about.html">About Us</a>
-            </div>
-        </li>
-      </ul>
-    </div>
-</nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-primary" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+              <div class="dropdown-menu text-primary" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item text-primary" href="create.html">Create Your Own Country</a>
+                <a class="dropdown-item text-primary" href="add_data.html">Contribute To Our Dataset</a>
+                <a class="dropdown-item text-primary" href="about.html">About Us</a>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </div> 
+  </nav>
 
-    <h2>About us: We're a group of change-seekers! On our individual journeys to change career paths, we banded together to create this AMAZING website. Here's some information about us: </h2>
-    <p class="text-warning">info about us. woo!</p>
+  <div class="main-plus-sidebar">
+    <main>
+      <h1>About this Project</h1>
+      <h2 class="text-primary">Why this topic?</h2>
+      <p>Happiness prediction is a valuable resource. If machine learning could predict the general happiness of a country based on certain characteristics of that country, we could then use this tool to improve living in those countries or future developments. Understanding what makes people happy goes a long way in contributing to a functioning society.</p>
+
+      <h2 class="text-primary">Purpose</h2>
+      <p>The purpose of this project was to use previously collected data on countries and their happiness scores to see if we could predict how happy someone would be in a country they created based on the parameters collected in the original data. Additionally, we wanted to give users the opportunity to add their own data to our dataset to further educate our machine learning model for (hopefully) more accurate predictions</p>
+
+      <h2 class="text-primary">Machine Learning: Training and Testing</h2>
+      <h3 class="text-success">Training</h3>
+      <p>We used the World Happiness Report from 2015 to train our machine learning model. We compared a linear regression model with an elastic net model. Our prediction accuracies were about the same for both models, so we went with the linear regression model.</p>
+      <h3 class="text-success">Testing</h3>
+      <p>To test our model we simply input actual countries into our “create your own country” webpage</p>
+
+      <h2 class="text-primary">Project Challenges</h2>
+      <h3 class="text-success">Data Cleaning</h3>
+      <p>Here’s a blurb about our data cleaning challenges. Maybe mention something</p>
+
+    </main>
+
+    <aside>
+      <div class="sidebar">
+        <h2 style="color:#fff;">Contact Us</h2>
+        <p>Contact Info for person #1</p>
+        <p>Contact Info for person #2</p>
+        <p>Contact Info for person #3</p>
+        <p>Contact Info for person #4</p>
+        <p>Contact Info for person #5</p>
+      </div>
+    </aside>
+  </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
