@@ -193,7 +193,7 @@ function ReactPlot() {
 
 function SetAllowance() {
     var allowval = 40 - Number(econ.node().value) - Number(health.node().value) - Number(free.node().value) - Number(trust.node().value) - Number(gener.node().value);
-    console.log(allowval);
+    d3.select("#allowance").text(`${allowval}`);
 }
 
 
@@ -228,6 +228,11 @@ function outputScore() {
         var queryurl = url + `/imaginary_country/${econval}/${healthval}/${freeval}/${trustval}/${generval}`
         d3.json(queryurl).then(function (response) {
             console.log(response);
+            var level = response["level"];
+            var nearest = response["nearest"];
+            var prediction = response["prediction"];
+            d3.select("#happscore").text(`${prediction} ${level}`)
+            d3.select("#country").text(`${nearest}`)
         })
     } else {
         d3.select("#message").node().style.visibility = "visible";

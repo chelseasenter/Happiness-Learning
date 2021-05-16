@@ -4,6 +4,7 @@ from joblib import dump, load
 from pickle import dump as dump_p, load as load_p
 from flask_cors import CORS, cross_origin
 import json
+from pprint import pprint
 
 # For SQL Connect
 from sqlalchemy.ext.automap import automap_base
@@ -61,7 +62,7 @@ def get_pred_happiness(econ_gdp, life_exp, freedom, govt_trust, generosity):
    intercept = 2.33466608
 
    # determine predicted happiness
-   prediction = econ_gdp*coef_gdp + life_exp*coef_life + freedom*coef_freedom + govt_trust*coef_corrupt + generosity*coef_generosity + intercept
+   prediction = (float(econ_gdp)/40.0)*coef_gdp + (float(life_exp)/40.0)*coef_life + (float(freedom)/40.0)*coef_freedom + (float(govt_trust)/40.0)*coef_corrupt + (float(generosity)/40.0)*coef_generosity + intercept
    
    # Detemine happiness level
    if prediction > happy:
@@ -77,20 +78,22 @@ def get_pred_happiness(econ_gdp, life_exp, freedom, govt_trust, generosity):
 
 
    # determine nearest country by happiness score
-   with open('Webpage\data\country_happiness_score.json') as f:
+   with open('data/country_happiness_score.json') as f:
       data = json.load(f)
-
+   nearest = "USA"
    start = 10
-   for key, value in data:
-      delta = prediction - value
+   for i in data:
+      print(i["country"])
 
-      if delta < start:
-         start = delta
-         nearest = key
+      delta = prediction - float(i["happiness_score"])
+
+      if abs(delta) < start:
+         start = abs(delta)
+         nearest = i["country"]
    
 
 
-   response = {"prediction": prediction, "level": hap_level, "nearest": nearest}
+   response = {"prediction": round(prediction, 2), "level": hap_level, "nearest": nearest}
 
 
    return jsonify(response)
