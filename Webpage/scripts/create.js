@@ -100,7 +100,18 @@ function init() {
         }
     ];
 
-    Plotly.newPlot('myBar', data, { responsive: true });
+    var layout = {
+        yaxis: {
+            range: [0, 40],
+            title: {
+                text: "Your Score",
+                standoff: 20
+              }
+        }
+    };
+      
+
+    Plotly.newPlot('myBar', data, layout, { responsive: true });
 
 
 
