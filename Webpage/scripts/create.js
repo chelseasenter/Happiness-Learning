@@ -105,10 +105,10 @@ function init() {
             title: {
                 text: "Your Score",
                 standoff: 20
-              }
+            }
         }
     };
-      
+
 
     Plotly.newPlot('myBar', data, layout, { responsive: true });
 
@@ -156,11 +156,45 @@ var gener = d3.select("#generosity")
 
 function UpdateMax() {
     for (let i = 0; i < xarray.length; i++) {
-        var max = 40 - Number(econ.node().value) - Number(health.node().value)- Number(free.node().value) - Number(trust.node().value) - Number(gener.node().value)+ Number(d3.select(`#${xarray[i]}`).value);
-    console.log(max);
-    d3.select(`#${xarray[i]}`).attr({"max": Number(max)}) 
+        console.log(Number(econ.node().value));
+        var max = 40 - Number(econ.node().value) - Number(health.node().value) - Number(free.node().value) - Number(trust.node().value) - Number(gener.node().value) + Number(d3.select(`#${xarray[i]}`).node().value);
+        console.log(max);
+        d3.select(`#${xarray[i]}`).attr({ "max": `${Number(max)}` });
     }
+};
+
+function ReactPlot() {
+    pointsarray = []
+    for (let i = 0; i < xarray.length; i++) {
+        pointsarray.push(d3.select(`#${xarray[i]}`).node().value);
     };
+    console.log(pointsarray);
+    var data = [
+        {
+            x: namearray,
+            y: pointsarray,
+            type: 'bar'
+        }
+    ];
+
+    var layout = {
+        yaxis: {
+            range: [0, 40],
+            title: {
+                text: "Your Score",
+                standoff: 20
+            }
+        }
+    };
+    Plotly.react('myBar', data, layout);
+    
+};
+
+function SetAllowance() {
+    var allowval = 40 - Number(econ.node().value) - Number(health.node().value) - Number(free.node().value) - Number(trust.node().value) - Number(gener.node().value);
+    console.log(allowval);
+}
+
 
 function NewUpdateScore() {
     var whatchange = d3.select(this);
@@ -168,6 +202,8 @@ function NewUpdateScore() {
     console.log(whatchange.node().value);
     var num = whatchange.node().value;
     var changeid = whatchange.attr("id");
+    ReactPlot();
+    SetAllowance();
     UpdateMax(changeid, num);
     // updateScore(changeid, num)
 }
@@ -181,7 +217,12 @@ gener.on("change", NewUpdateScore);
 
 function outputScore() {
     //function to pull the values from each object and create a json query to pull them from flask route
-    console.log(allowtext)
+    var sum = Number(econ.node().value) + Number(health.node().value) + Number(free.node().value) + Number(trust.node().value) + Number(gener.node().value);
+    if (sum === 40) {
+
+    } else {
+        d3.select("#message").node().style.visibility = "visible";
+    }
     //return the value into d3 select happscore and update
     // return the country that also has the closest attributes to the user's country
 };
