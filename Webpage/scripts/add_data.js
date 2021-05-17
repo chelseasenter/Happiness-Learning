@@ -53,7 +53,7 @@ function PushData(govt, free, howhapp, gen) {
         happiness: howhapp,
         generosity: gen
     };
-    $.post("/postmethod", {
+    $.post(url + "postmethod", {
         javascript_data: inputdict
     });
 
