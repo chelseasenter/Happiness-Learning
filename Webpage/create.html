@@ -33,95 +33,77 @@
         </div> 
       </nav>
 
-    <div class="container">
-        <div class="row">
-            <h2>Create your own country here and we'll tell you how happy you'll be!</h2>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-lg-3 col-xl-3">
-                <p>You've been given an allowance to distribute to each category. When you have used your whole
-                    allowance,
-                    please press submit and we will return the happiness score for your country. We will also show you
-                    the
-                    closest country to yours and how you compare! Please use the reset button if you want to try again"
-                </p>
-                <!-- </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2"></div> -->
-                <h3>Allowance</h3>
+    <main>
+        <div class="container">
+            <div class="row">
+                <h1>Create your own country here and we'll tell you how happy you'll be!</h1>
                 <hr>
-                <h2 id="allowance" value="40" min="0" max="40">40</h2>
-            </div>
-            <div class="col-md-12 col-lg-9 col-xl-9">
-                <div id="myBar"></div>
-                <table>
-                    <!-- <trow>
-                            <td>Economy GDP per Capita <input id="economy_gdp_per_capita" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td>Health Life Expectancy <input id="health_life_expectancy" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td>Freedom <input id="freedom" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td>Trust Government Corruption <input id="trust_government_corruption" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td>Genrosity <input id="generosity" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td><button id="submit">Submit</button></td>
-                        </trow> -->
-                    <tbody class="scorebuttons">
-                        <trow>
-                            <td>Economy GDP per Capita</td>
-                            <td> <input id="economy_gdp_per_capita" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td>Health Life Expectancy</td>
-                            <td><input id="health_life_expectancy" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td>Freedom </td>
-                            <td><input id="freedom" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td>Trust Government Corruption </td>
-                            <td><input id="trust_government_corruption" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td>Genrosity </td>
-                            <td><input id="generosity" type="number" value=0 min=0 max=40></td>
-                        </trow>
-                        <trow>
-                            <td><button id="submit">Submit</button></td>
-                        </trow>
-                        <trow>
-                            <td>
-                                <div id="message" style="visibility:hidden">
-                                    <p>Please use exactly 40 points before you press Submit. Thank you!</p>
-                                </div>
-                            </td>
-                        </trow>
-                    </tbody>
-                </table>
             </div>
             <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <h3>Your Country Happiness Score:</h3>
-                    <hr>
-                    <h2 id="happscore">?</h2>
+                <div class="col-md-12 col-lg-3 col-xl-3">
+                    <h3>Instructions</h3>
+                    <hr style="background-color:#afafaf">
+                    <p class="text-danger">1. You have an allowance to distribute out to each category as you see fit.</p>
+                    <p class="text-warning">2. Once you spend your allowance, submit your selections and we'll return the happiness score for your country.  </p>
+                    <p class="text-primary">3. We'll also show you the closest country to yours and how you compare!</p>
+                    <p class="text-success">4. Use the reset button if you want to try again</p>
+                    <p class="text-info">Have fun!</p>
+                    <hr style="background-color:#afafaf">
+                    <!-- </div>
+                <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2"></div> -->
+                    <h3>Allowance</h3>
+                    <h2 id="allowance" value="40" min="0" max="40">40</h2>
                 </div>
-                <div class="col-sm-12 col-md-6">
-                    <h3>Closest Country</h3>
-                    <hr>
-                    <h2 id="country">?</h2>
+                <div class="col-md-12 col-lg-9 col-xl-9">
+                    <div id="myBar"></div>
+
+                    <div class="scorebuttons">
+                        <div class="scorebuttons__grid">
+                            <div class="scorebuttons__grid-item">
+                                <label>Economy GDP per Capita</label>
+                                <input id="economy_gdp_per_capita" type="number" value=0 min=0 max=40>
+                            </div>
+                            <div class="scorebuttons__grid-item">
+                                <label>Health Life Expectancy</label>
+                                <input id="health_life_expectancy" type="number" value=0 min=0 max=40>
+                            </div>
+                            <div class="scorebuttons__grid-item">
+                                <label>Freedom</label>
+                                <input id="freedom" type="number" value=0 min=0 max=40>
+                            </div>
+                            <div class="scorebuttons__grid-item">
+                                <label>Trust Government Corruption</label>
+                                <input id="trust_government_corruption" type="number" value=0 min=0 max=40>
+                            </div>
+                            <div class="scorebuttons__grid-item max40">
+                                <label>Generosity</label>
+                                <input id="generosity" type="number" value=0 min=0 max=40>
+                            </div>
+                            <div class="scorebuttons__grid-item">
+                                <button id="submit">Submit</button>
+                            </div>
+                        </div>
+                        <div id="message" class="scorebuttons__message" style="visibility:hidden">
+                            <p>Please use exactly 40 points before you press Submit. Thank you!</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row results" style="justify-content:center; width:100%; text-align:center; visibility:hidden;">
+                    <div class="col-sm-12 col-md-6">
+                        <h3>Your Country Happiness Score:</h3>
+                        <hr>
+                        <h2 id="happscore">?</h2>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <h3>Closest Country</h3>
+                        <hr>
+                        <h2 id="country">?</h2>
+                    </div>
                 </div>
             </div>
         </div>
-
-    </div>
+    </main>
 
 
     <script src="https://d3js.org/d3.v6.min.js"></script>

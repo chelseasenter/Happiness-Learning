@@ -101,11 +101,21 @@ function init() {
     ];
 
     var layout = {
+        paper_bgcolor: "#073642",
+        plot_bgcolor:"#073642",
+        font: {
+            color:"#bb9625",
+        },
         yaxis: {
             range: [0, 40],
             title: {
-                text: "Your Score",
+                text: "Your Selection",
                 standoff: 20
+            }
+        },
+        xaxis: {
+            labels: {
+                rotate: 127
             }
         }
     };
@@ -179,11 +189,21 @@ function ReactPlot() {
     ];
 
     var layout = {
+        paper_bgcolor: "#073642",
+        plot_bgcolor:"#073642",
+        font: {
+            color:"#bb9625",
+        },
         yaxis: {
             range: [0, 40],
             title: {
-                text: "Your Score",
+                text: "Your Selection",
                 standoff: 20
+            }
+        },
+        xaxis: {
+            labels: {
+                rotate: 0
             }
         }
     };
@@ -233,15 +253,17 @@ function outputScore() {
             var prediction = response["prediction"];
             d3.select("#happscore").text(`${prediction} ${level}`)
             d3.select("#country").text(`${nearest}`)
+            d3.select(".results").node().style.visibility = "visible";
+            d3.select("#message").node().style.visibility = "hidden";
         })
     } else {
         d3.select("#message").node().style.visibility = "visible";
+        d3.select(".results").node().style.visibility = "hidden";
     }
     //return the value into d3 select happscore and update
     // return the country that also has the closest attributes to the user's country
 };
 d3.select("#submit").on("click", outputScore);
-
 
 init(
 );

@@ -83,5 +83,44 @@ body.about main {
 .icons {
     width:20px;
     margin-left:.5rem;
+}
 
+.scorebuttons__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+    margin: 1em 0;
+}
+.scorebuttons__grid-item {
+    height: 100%;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0 1rem;
+}
+.scorebuttons__grid-item:not(:first-child) {
+    margin-left: 1em;
+}
+.scorebuttons__grid-item label {
+    display: block;
+    width: 100%;
+}
+.scorebuttons input[type=number] {
+    background-color: #073642;
+    color: #b58900;
+    border: 1px solid #b58900;
+}
+
+#submit {
+    background-color: #073642;
+    color: #b58900;
+    border: 1px solid #b58900;
+    font-weight: 700;
+}
+
+#submit:hover {
+    background-color: #0c5061;
+    color: #bb9625;
+    border: 1px solid #bb9625;
+    font-weight: 700;
 }
