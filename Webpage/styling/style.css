@@ -135,6 +135,13 @@ body.about main {
     border: 1px solid #b58900;
 }
 
+#newentry:hover {
+    background-color: #0c5061;
+    color: #bb9625;
+    border: 1px solid #bb9625;
+    font-weight: 700;
+}
+
 .point > path {
 	fill: #b58900!important;	
 }
@@ -149,7 +156,7 @@ body.about main {
 
 #message {
     font-size:large;
-    alignment: center;
+    align-content: center;
     visibility:hidden;
 }
 
