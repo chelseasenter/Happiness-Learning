@@ -124,3 +124,9 @@ body.about main {
     border: 1px solid #bb9625;
     font-weight: 700;
 }
+
+#selcont, #govt, #free, #howhapp, #gen, #newentry {
+    background-color: #073642;
+    color: #b58900;
+    border: 1px solid #b58900;
+}
