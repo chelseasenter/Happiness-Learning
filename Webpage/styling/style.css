@@ -85,6 +85,10 @@ body.about main {
     margin-left:.5rem;
 }
 
+.scorebuttons {
+    margin-top: 5em;
+}
+
 .scorebuttons__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
@@ -129,4 +133,30 @@ body.about main {
     background-color: #073642;
     color: #b58900;
     border: 1px solid #b58900;
+}
+
+.point > path {
+	fill: #b58900!important;	
+}
+.main-svg {
+    height: 500px;
+    border: 1px solid #b58900;
+}
+
+#country, #happscore {
+    color: #b58900
+}
+
+#message {
+    font-size:large;
+    alignment: center;
+    visibility:hidden;
+}
+
+.y path.ygrid {
+    stroke: #b5890020!important;
+}
+
+.zerolinelayer path {
+    stroke: #b5890099!important;
 }
