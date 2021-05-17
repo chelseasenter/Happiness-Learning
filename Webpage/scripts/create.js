@@ -34,6 +34,7 @@ function FormatCats(name) {
 //     const base = name.split("_");
 //     x_category = base.map((word) => {
 //         strings = []
+//         console.log(strings)
 //         if (word == "gdp") {
 //             return strings.push(word.toUpperCase());
 //         } else if (word == "per") {
@@ -41,6 +42,7 @@ function FormatCats(name) {
 //         } else {
 //             return strings.push(word[0].toUpperCase() + word.substring(1));
 //         };
+//         console.log(strings)
 //     }).join(" ")
 //     return x_category;
 // };
@@ -107,7 +109,7 @@ function init() {
     xarray.forEach(cats => new CategoryLevel(cats));
 
 
-
+    // var namearray = [["Economy", "GDP", "per", "Capita"], ["Health", "Life", "Expectancy"], ["Freedom"], ["Trust", "Government", "Corruption"], ["Generosity"]
 
     var data = [
         {
