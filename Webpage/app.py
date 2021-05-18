@@ -100,19 +100,19 @@ def get_pred_happiness(econ_gdp, life_exp, freedom, govt_trust, generosity):
    return jsonify(response)
 
 
-@app.route('/FTM/<cntry>/<econ_gdp>/<life_exp>/<frdm>/<govt_trust>/<generosity>')
-def store_FTM(cntry,econ_gdp, life_exp, frdm, govt_trust, gnrsty):
+@app.route('/FTM/<cntry>/<howhapp>/<frdm>/<govt_trust>/<generosity>')
+def store_FTM(cntry, howhapp, frdm, govt_trust, generosity):
 
+   print(cntry, howhapp, frdm, govt_trust, generosity)
    try:
-   
+      
       conn = engine.connect()
       
       year = datetime.date.today().year
 
-      score = 1
-      
+    
       # no column specification needed if all columns are inserted
-      stmt = f'INSERT INTO feed_the_machine VALUES ({cntry}, {score}, {econ_gdp}, {life_exp}, {frdm}, {govt_trust}, {gnrsty}, {year});'
+      stmt = f"INSERT INTO feed_the_machine VALUES ('{cntry}', {frdm}, {govt_trust}, {generosity}, {year}, {howhapp});"
 
       conn.execute(stmt)
 
@@ -122,7 +122,7 @@ def store_FTM(cntry,econ_gdp, life_exp, frdm, govt_trust, gnrsty):
    
 
    # store countries only for dropdown
-   with open('Webpage\data\country_happiness_score.json') as f:
+   with open('data\country_happiness_score.json') as f:
       data = json.load(f)
 
    countries = []
