@@ -144,14 +144,16 @@ def get_post_javascript_data():
     return jsdata
 
 def time_plot(country):
-        time_df = pd.read_sql(f"SELECT country, happiness_score, year FROM public.happiness_data", con=engine)
+        time_df = pd.read_sql(f"SELECT country, happiness_score, year, health_life_expectancy FROM public.happiness_data", con=engine)
         x_data = time_df[time_df["country"] == country]["year"]
-        print(x_data)
+        misc_data = time_df[(time_df["country"] == country) & (time_df["year"] == 2020)]["health_life_expectancy"]
+        print(misc_data)
         y_data = y_data = time_df[time_df["country"] == country]["happiness_score"]
         time_dict = {
             "country": country,
             "x_data": x_data,
-            "y_data": y_data
+            "y_data": y_data,
+            "health": misc_data
         }
         return(time_dict)
 
@@ -161,7 +163,8 @@ def Line_plot(country):
     response ={
         "country": country,
         "x_data": list(data["x_data"]),
-        "y_data": list(data["y_data"])
+        "y_data": list(data["y_data"]),
+        "health": list(data["health"])
     }
     return jsonify(response)
 

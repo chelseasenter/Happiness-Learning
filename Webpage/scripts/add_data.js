@@ -108,6 +108,7 @@ function CountryPlot(country, howhapp) {
         var x_data = response.x_data;
         var y_data = response.y_data;
         var country = response.country;
+        var health = response.health;
 
         var trace1 = {
             x: x_data,
