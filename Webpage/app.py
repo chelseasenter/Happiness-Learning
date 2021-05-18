@@ -6,6 +6,7 @@ from flask_cors import CORS, cross_origin
 import json
 from pprint import pprint
 import datetime
+import pandas as pd
 
 # For SQL Connect
 from sqlalchemy.ext.automap import automap_base
@@ -141,6 +142,28 @@ def get_post_javascript_data():
     jsdata = request.form['javascript_data']
     print(jsdata)
     return jsdata
+
+def time_plot(country):
+        time_df = pd.read_sql(f"SELECT country, happiness_score, year FROM public.happiness_data", con=engine)
+        x_data = time_df[time_df["country"] == country]["year"]
+        print(x_data)
+        y_data = y_data = time_df[time_df["country"] == country]["happiness_score"]
+        time_dict = {
+            "country": country,
+            "x_data": x_data,
+            "y_data": y_data
+        }
+        return(time_dict)
+
+@app.route("/line_plot/<country>")
+def Line_plot(country):
+    data = time_plot(country)
+    response ={
+        "country": country,
+        "x_data": list(data["x_data"]),
+        "y_data": list(data["y_data"])
+    }
+    return jsonify(response)
 
 
 if __name__ == "__main__":
