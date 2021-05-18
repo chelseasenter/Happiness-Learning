@@ -35,12 +35,12 @@ This project considered 2 machine learning algorthm posssiblities: Linear Regres
 # Contact Us
 ### Check out our personal GitHub and LinkedIn accounts!
 
-Alisha Coffey ![Webpage/images/github.png](Webpage/images/github.png)
+Alisha Coffey [Alisha's LinkedIn](https://www.linkedin.com/in/alishacoffey) [Alisha's Github](https://github.com/alirenco) 
 
-Chelsea Senter linked in icon linked in icon
+Chelsea Senter [Chelsea's LinkedIn](https://www.linkedin.com/in/chelseasenter/) [Chelsea's Github](https://github.com/chelseasenter)
 
-Evan Mobley linked in icon linked in icon
+Evan Mobley [Evan's LinkedIn](https://www.linkedin.com/in/evanmmobley/) [Evan's Github](https://github.com/emmobley63)
 
-Paul Anderson linked in icon linked in icon
+Paul Anderson [Paul's LinkedIn](https://www.linkedin.com/in/paul-anderson-1426b340/) [Paul's Github](https://github.com/pander1405)
 
-Shreya Bakshi linked in icon linked in icon
+Shreya Bakshi [Shreya's LinkedIn](https://www.linkedin.com/in/shreya-bakshi/) [Shreya's Github](https://github.com/bakshishreya)
