@@ -5,6 +5,7 @@ from pickle import dump as dump_p, load as load_p
 from flask_cors import CORS, cross_origin
 import json
 from pprint import pprint
+import datetime
 
 # For SQL Connect
 from sqlalchemy.ext.automap import automap_base
@@ -99,32 +100,34 @@ def get_pred_happiness(econ_gdp, life_exp, freedom, govt_trust, generosity):
    return jsonify(response)
 
 
-@app.route('/FTM/<cntry>/<econ_gdp>/<life_exp>/<frdm>/<govt_trust>/<generosity>')
-def store_FTM(cntry,econ_gdp, life_exp, frdm, govt_trust, gnrsty):
+@app.route('/FTM/<cntry>/<howhapp>/<frdm>/<govt_trust>/<generosity>')
+def store_FTM(cntry, howhapp, frdm, govt_trust, generosity):
 
+   print(cntry, howhapp, frdm, govt_trust, generosity)
    try:
-   
+      
       conn = engine.connect()
       
-      stmt = (
-         insert('feed_the_machine'). #table name
-         values(country = cntry, econ_gdp_per_capita = econ_gdp, health_life_expectancy = life_exp, freedom = frdm, trust_government_corruption = govt_trust, generosity = gnrsty)
-      )
+      year = datetime.date.today().year
 
-      result = conn.execute(stmt)
+    
+      # no column specification needed if all columns are inserted
+      stmt = f"INSERT INTO feed_the_machine VALUES ('{cntry}', {frdm}, {govt_trust}, {generosity}, {year}, {howhapp});"
 
-      message = result
+      conn.execute(stmt)
+
+      message = 'Your information has been recorded'
    except:
       message = 'An error occured'
    
 
    # store countries only for dropdown
-   with open('Webpage\data\country_happiness_score.json') as f:
+   with open('data\country_happiness_score.json') as f:
       data = json.load(f)
 
    countries = []
    for key in data:
-
+      #store unique countries only
       if key not in countries:
          countries.append(key)
 
@@ -133,9 +136,10 @@ def store_FTM(cntry,econ_gdp, life_exp, frdm, govt_trust, gnrsty):
 
    return jsonify(response)
 
-@app.route('/postmethod', methods = ['POST'])
+@app.route('/postmethod', methods = ['POST', 'GET'])
 def get_post_javascript_data():
     jsdata = request.form['javascript_data']
+    print(jsdata)
     return jsdata
 
 

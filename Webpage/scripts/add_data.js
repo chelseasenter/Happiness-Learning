@@ -46,18 +46,31 @@ function Tags() {
 };
 Tags();
 
-function PushData(govt, free, howhapp, gen) {
-    var inputdict = {
-        government: govt,
-        freedom: free,
-        happiness: howhapp,
-        generosity: gen
-    };
-    $.post("/postmethod", {
-        javascript_data: inputdict
-    });
 
+function SubmitData(country, govt, free, howhapp, gen) {
+    var queryurl = url + `FTM/${country}/${howhapp}/${free}/${govt}/${gen}`
+        d3.json(queryurl).then(function (response) {
+            console.log(response);
+            // var message = response["message"];
+
+            // d3.select("#happscore").text(`${prediction}`)
+            // d3.select("#message").text(`${message}`)
+
+        });
 };
+
+// function PushData(govt, free, howhapp, gen) {
+//     var inputdict = {
+//         government: govt,
+//         freedom: free,
+//         happiness: howhapp,
+//         generosity: gen
+//     };
+//     $.post(url + "postmethod", {
+//         javascript_data: inputdict
+//     });
+
+// };
 
 //Nathan's way//
 // function PushData(govt, free, howhapp, gen) {
@@ -74,12 +87,13 @@ function PushData(govt, free, howhapp, gen) {
 
 function ImportData() {
     console.log("ImportData is happening")
+    var country = d3.select("#selcont").node().value
     var govt = d3.select("#govt").node().value;
     var free = d3.select("#free").node().value;
     var howhapp = d3.select("#howhapp").node().value;
     var gen = d3.select("#gen").node().value;
     // function to push to flask
-    PushData(govt, free, howhapp, gen);
+    SubmitData(country, govt, free, howhapp, gen);
     console.log(free)
 }
 
