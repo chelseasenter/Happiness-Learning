@@ -35,12 +35,12 @@ This project considered 2 machine learning algorthm posssiblities: Linear Regres
 # Contact Us
 ### Check out our personal GitHub and LinkedIn accounts!
 
-Alisha Coffey [Alisha's LinkedIn](https://www.linkedin.com/in/alishacoffey) [Alisha's Github](https://github.com/alirenco) 
+Alisha Coffey | [Alisha's LinkedIn](https://www.linkedin.com/in/alishacoffey) | [Alisha's Github](https://github.com/alirenco) 
 
-Chelsea Senter [Chelsea's LinkedIn](https://www.linkedin.com/in/chelseasenter/) [Chelsea's Github](https://github.com/chelseasenter)
+Chelsea Senter | [Chelsea's LinkedIn](https://www.linkedin.com/in/chelseasenter/) | [Chelsea's Github](https://github.com/chelseasenter)
 
-Evan Mobley [Evan's LinkedIn](https://www.linkedin.com/in/evanmmobley/) [Evan's Github](https://github.com/emmobley63)
+Evan Mobley | [Evan's LinkedIn](https://www.linkedin.com/in/evanmmobley/) | [Evan's Github](https://github.com/emmobley63)
 
-Paul Anderson [Paul's LinkedIn](https://www.linkedin.com/in/paul-anderson-1426b340/) [Paul's Github](https://github.com/pander1405)
+Paul Anderson | [Paul's LinkedIn](https://www.linkedin.com/in/paul-anderson-1426b340/) | [Paul's Github](https://github.com/pander1405)
 
-Shreya Bakshi [Shreya's LinkedIn](https://www.linkedin.com/in/shreya-bakshi/) [Shreya's Github](https://github.com/bakshishreya)
+Shreya Bakshi | [Shreya's LinkedIn](https://www.linkedin.com/in/shreya-bakshi/) | [Shreya's Github](https://github.com/bakshishreya)
