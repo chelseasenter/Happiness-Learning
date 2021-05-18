@@ -92,6 +92,7 @@ function ImportData() {
     var free = d3.select("#free").node().value;
     var howhapp = d3.select("#howhapp").node().value;
     var gen = d3.select("#gen").node().value;
+    d3.select("#submitmessage").node().style.visibility = "visible";
     // function to push to flask
     SubmitData(country, govt, free, howhapp, gen);
     console.log(free)
