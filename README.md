@@ -35,7 +35,7 @@ This project considered 2 machine learning algorthm posssiblities: Linear Regres
 # Contact Us
 ### Check out our personal GitHub and LinkedIn accounts!
 
-Alisha Coffey ![Webpage/images/github.png](https://www.linkedin.com/in/alishacoffey)
+Alisha Coffey ![Webpage/images/github.png](Webpage/images/github.png)
 
 Chelsea Senter linked in icon linked in icon
 
