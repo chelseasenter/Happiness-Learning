@@ -30,22 +30,6 @@ function FormatCats(name) {
     return x_category;
 };
 
-// function FormatCats(name) {
-//     const base = name.split("_");
-//     x_category = base.map((word) => {
-//         strings = []
-//         console.log(strings)
-//         if (word == "gdp") {
-//             return strings.push(word.toUpperCase());
-//         } else if (word == "per") {
-//             return strings.push(word);
-//         } else {
-//             return strings.push(word[0].toUpperCase() + word.substring(1));
-//         };
-//         console.log(strings)
-//     }).join(" ")
-//     return x_category;
-// };
 
 class CategoryLevel {
     constructor(category) {
@@ -68,16 +52,7 @@ class CategoryLevel {
     }
 };
 
-//A function to create the objects in variables (same as the newxarray)
 
-// function CreateObjects() {
-//     var economy_gdp_per_capita = new CategoryLevel('economy_gdp_per_capita');
-//     var health_life_expectancy = new CategoryLevel('health_life_expectancy');
-//     var freedom = new CategoryLevel('freedom');
-//     var trust_government_corruption = new CategoryLevel('trust_government_corruption');
-//     var generosity = new CategoryLevel('generosity');
-// };
-// CreateObjects();
 
 //A funciton to update the arrays with the new values
 
